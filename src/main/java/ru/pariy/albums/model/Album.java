@@ -1,5 +1,8 @@
 package ru.pariy.albums.model;
 
+/**
+ * Класс, представляющий музыкальный альбом
+ */
 public class Album {
     private long id;
     private String artist;
@@ -12,6 +15,37 @@ public class Album {
     private String label;
     private String producer;
     private int tracksNumber;
+
+    /**
+     * Конструктор класса. Создает объект альбома с указанными параметрами.
+     *
+     * @param artist      Исполнитель альбома.
+     * @param name        Название альбома.
+     * @param genre       Жанр альбома.
+     * @param released    Дата выпуска альбома.
+     * @param recorded    Дата записи альбома.
+     * @param duration    Продолжительность альбома.
+     * @param country     Страна происхождения альбома.
+     * @param label       Лейбл альбома.
+     * @param producer    Продюсер альбома.
+     * @param tracksNumber Количество треков на альбоме.
+     */
+    public Album(String artist, String name,
+                 String genre,
+                 String released, String recorded,
+                 String duration, String country, String label,
+                 String producer, int tracksNumber) {
+        this.artist = artist;
+        this.name = name;
+        this.genre = genre;
+        this.released = released;
+        this.recorded = recorded;
+        this.duration = duration;
+        this.country = country;
+        this.label = label;
+        this.producer = producer;
+        this.tracksNumber = tracksNumber;
+    }
 
     public long getId() {
         return id;
@@ -101,22 +135,7 @@ public class Album {
         this.tracksNumber = tracksNumber;
     }
 
-    public Album(String artist, String name,
-                 String genre,
-                 String released, String recorded,
-                 String duration, String country, String label,
-                 String producer, int tracksNumber) {
-        this.artist = artist;
-        this.name = name;
-        this.genre = genre;
-        this.released = released;
-        this.recorded = recorded;
-        this.duration = duration;
-        this.country = country;
-        this.label = label;
-        this.producer = producer;
-        this.tracksNumber = tracksNumber;
-    }
+
 
     @Override
     public String toString() {
