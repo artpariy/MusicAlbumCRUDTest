@@ -9,6 +9,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Реализация хранилища альбомов в памяти, соответствующая интерфейсу {@link AlbumRepository}.
+ * Это хранилище хранит альбомы в списке в памяти. Класс реализует методы репозитория альбомов.
+ */
 public class MemoryAlbumRepository implements AlbumRepository {
     private static final Logger logger = LoggerFactory.getLogger(MemoryAlbumRepository.class);
     private final List<Album> albums = new ArrayList<>();

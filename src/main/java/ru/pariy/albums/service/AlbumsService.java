@@ -5,6 +5,11 @@ import ru.pariy.albums.model.Album;
 
 import java.util.List;
 
+/**
+ * Сервис для управления альбомами.
+ * Обеспечивает взаимодействие между классом с пользовательским вводом и выводом
+ * и реализацией репозитория альбомов.
+ */
 public class AlbumsService {
 
     private final AlbumRepository albumRepository;

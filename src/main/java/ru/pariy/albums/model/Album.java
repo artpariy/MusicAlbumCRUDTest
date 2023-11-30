@@ -133,15 +133,4 @@ public class Album {
                 "tracksNumber=" + tracksNumber + "\n" +
                 "-------------------";
     }
-
-    //    @Override
-//    public String toString() {
-//        return "id=" + id + "\n" +
-//                "artist='" + artist + '\'' + "\n" +
-//                "name='" + name + '\'' + "\n" +
-//                "genre='" + genre + '\'' + "\n" +
-//
-//                "-------------------";
-//    }
-
 }
