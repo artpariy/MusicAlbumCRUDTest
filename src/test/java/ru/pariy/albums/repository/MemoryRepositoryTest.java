@@ -1,22 +1,25 @@
-package ru.pariy.albums.dao;
+package ru.pariy.albums.repository;
 
 import org.junit.Before;
 import org.junit.Test;
 import ru.pariy.albums.model.Album;
-import ru.pariy.albums.repository.AlbumRepository;
-import ru.pariy.albums.repository.MemoryAlbumRepository;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
 
+/**
+ * Класс, представляющий набор тестов для проверки функционала MemoryAlbumRepository.
+ */
 public class MemoryRepositoryTest {
 
     private AlbumRepository albumRepository;
 
+    /**
+     * Подготовка данных перед выполнением тестов.
+     */
     @Before
     public void setUp() {
-
         albumRepository = new MemoryAlbumRepository();
 
         long nextId = 1;
@@ -30,6 +33,9 @@ public class MemoryRepositoryTest {
         }
     }
 
+    /**
+     * Проверка, что при добавлении одного альбома размер списка увеличится на 1.
+     */
     @Test
     public void whenOneAlbumIsAddedTheSizeWillIncreaseBy1() {
         Album album = new Album("Test Artist11", "Test Album11",
@@ -42,28 +48,43 @@ public class MemoryRepositoryTest {
         assertEquals(11, result.size());
     }
 
+    /**
+     * Проверка, что из непустого списка возвращаются объекты.
+     */
     @Test
     public void getAllAlbumsFromNotEmptyList() {
         List<Album> result = albumRepository.getAllAlbums();
         assertFalse(result.isEmpty());
     }
 
+    /**
+     * Проверка, что попытка получения всех альбомов из пустого списка возвращает пустой список.
+     */
     @Test
     public void getAllAlbumsFromEmptyList() {
         AlbumRepository albumRepository = new MemoryAlbumRepository();
         assertTrue(albumRepository.getAllAlbums().isEmpty());
     }
 
+    /**
+     * Проверка, что альбом с указанным идентификатором будет найден.
+     */
     @Test
     public void getAlbumByIdWillFound() {
         assertNotNull(albumRepository.getAlbumById(1));
     }
 
+    /**
+     * Проверка, что альбом с указанным идентификатором не будет найден.
+     */
     @Test
     public void getAlbumByIdWillNotFound() {
         assertNull(albumRepository.getAlbumById(199));
     }
 
+    /**
+     * Проверка, что альбом будет успешно обновлен.
+     */
     @Test
     public void theAlbumWillBeUpdated() {
         Album updatedAlbum = new Album("Test Artist50", "Test Album50",
@@ -77,6 +98,10 @@ public class MemoryRepositoryTest {
         assertEquals(updatedAlbum.getGenre(), result.getGenre());
     }
 
+    /**
+     * Проверка, что при попытке обновить альбом с несуществующим идентификатором,
+     * операция обновления вернет false.
+     */
     @Test
     public void theAlbumBeingUpdatedWasNotFoundById() {
         Album updatedAlbum = new Album("Test Artist50", "Test Album50",
@@ -86,6 +111,9 @@ public class MemoryRepositoryTest {
         assertFalse(albumRepository.updateAlbum(199, updatedAlbum));
     }
 
+    /**
+     * Проверка, что альбом будет успешно удален.
+     */
     @Test
     public void theAlbumWillBeDeleted() {
         albumRepository.deleteAlbum(11);
@@ -93,6 +121,10 @@ public class MemoryRepositoryTest {
         assertEquals(10, result.size());
     }
 
+    /**
+     * Проверка, что при попытке удалить альбом с несуществующим идентификатором,
+     * операция удаления вернет false.
+     */
     @Test
     public void theAlbumToBeDeletedWasNotFoundById() {
         assertFalse(albumRepository.deleteAlbum(199));
