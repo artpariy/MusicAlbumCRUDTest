@@ -1,4 +1,4 @@
-package ru.pariy.albums.dao;
+package ru.pariy.albums.repository;
 
 import ru.pariy.albums.model.Album;
 
